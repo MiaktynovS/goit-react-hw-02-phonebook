@@ -10,8 +10,7 @@ export const ContList = ({ contacts, handleDeleteContact }) => (
           <button
             type="button"
             className={s.contList__btn}
-            onClick={() => handleDeleteContact(contact.id)}
-          >
+            onClick={() => handleDeleteContact(contact.id)}>
             Delete
           </button>
         </li>
