@@ -1,16 +1,16 @@
 import propTypes from 'prop-types';
-import s from './ContactList.module.css';
+import s from './ContList.module.css';
 
-export const ContactList = ({ contacts, handleDelete }) => (
-  <div className={s.wraperContactList}>
-    <ul className={s.contactList}>
+export const ContList = ({ contacts, handleDeleteContact }) => (
+  <div>
+    <ul className={s.contList}>
       {contacts.map((contact, id) => (
-        <li key={id} className={s.contactListItem}>
+        <li key={id} className={s.contList__item}>
           {contact.name}: {contact.number}
           <button
             type="button"
-            className={s.contactListItemBtn}
-            onClick={() => handleDelete(contact.id)}
+            className={s.contList__btn}
+            onClick={() => handleDeleteContact(contact.id)}
           >
             Delete
           </button>
@@ -20,7 +20,7 @@ export const ContactList = ({ contacts, handleDelete }) => (
   </div>
 );
 
-ContactList.propTypes = {
+ContList.propTypes = {
   contacts: propTypes.arrayOf(
     propTypes.exact({
       id: propTypes.string.isRequired,
@@ -28,5 +28,5 @@ ContactList.propTypes = {
       number: propTypes.string.isRequired,
     })
   ),
-  handleDelete: propTypes.func.isRequired,
+  handleDeleteContact: propTypes.func.isRequired,
 };
