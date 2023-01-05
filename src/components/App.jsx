@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
-import { ContList } from './ContactList/ContactList';
+import { ContactList } from './ContactList/ContactList';
 
 export class App extends Component {
   state = {
@@ -13,13 +13,10 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
 
   handleChange = e => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
+    this.setState({ filter: e.target.value });
   };
 
   handleSubmit = e => {
@@ -62,7 +59,7 @@ export class App extends Component {
         <ContactForm onSubmit={this.handleSubmit} />
         <h2> Contacts</h2>
         <Filter filter={filter} handleChange={this.handleChange} />
-        <ContList
+        <ContactList
           contacts={this.getFilteredContacts()}
           handleDeleteContact={this.handleDeleteContact}
         />
